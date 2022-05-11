@@ -1,0 +1,46 @@
+# /test 로 요청하는 요청에 대한 설계
+
+요청내용 : 주소표시줄 혹은 form 태그의 action 속성, 또는 ajax()의 url 속성에 기입하는 주소
+			(어떤 페이지 부를거냐!)
+			
+파라미터 : 전달할 데이터 (키값만 나열)
+
+컨트롤러 : 요청 내용이 서버에 전달되었을 때 실행할 클래스 경로
+
+	 뷰	 : 보여줄 JSP 파일 경로
+	 
+----------------------------------------------------------------------------------------------------------------------------------
+# Login 폼 보기 요청
+
+요청내용 : /whale/test/login.dream
+파라미터 : X
+컨트롤러 : com.githrd.test.Login
+	  뷰 : /WEB-INF/views/test/login.jsp
+-------------------------------------------------------------------
+# Login 처리요청
+요청내용 : /whale/test/loginProc.dream
+파라미터 : id, pw
+컨트롤러 : com.githrd.test.LoginProc
+	  뷰 : redirect)
+	  		success : /whale/
+	  		fail	: /whale/test/login.dream
+-------------------------------------------------------------------
+# Logout 처리요청
+요청내용 : /whale/test/logout.dream
+파라미터 : X
+컨트롤러 : com.githrd.test.Logout
+	  뷰 : redirect)
+	  		success	: /whale/test/login.dream
+	  		fail	: /whale/
+-------------------------------------------------------------------
+# 아바타 버튼 리스트 폼 보기 요청
+요청내용 : /whale/test/avtList.dream
+파라미터 : X
+컨트롤러 :com.githrd.test.AvtList
+	  뷰 : /whale/test/
+-------------------------------------------------------------------
+# 아바타 정보 비동기통신 요청
+요청내용 : /whale/test/avtInfo.dream?ano=11
+파라미터 : ano
+컨트롤러 :com.githrd.test.Avtinfo
+	  뷰 : json

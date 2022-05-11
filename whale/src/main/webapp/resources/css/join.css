@@ -1,0 +1,113 @@
+@charset "UTF-8";
+
+.content {
+	text-align: center;
+}
+.btn {
+	display: inline-block;
+	width: 33.33%;
+	height: 30px;
+	margin: 0%;
+	cursor: pointer;
+	border: none;
+	font-family: Cooper;
+	padding: 0px;
+}
+
+
+.box700 {
+	width:700px;
+	display: inline-block;
+	padding: 0px;
+	text-align: center;
+}
+.border-gray{
+	border: 0.5px solid gray;
+}
+header {
+	background-color: #cafb32;
+	color: white;
+	width: 700px;
+	height: 50px;
+	font-size: 30px;
+	margin-bottom: 0px;
+	font-weight: bold;
+}
+
+form {
+	padding-top: 5px;
+	width: 700px;
+	display: inline-block;
+	margin: none;
+}
+
+.row {
+	margin: 5px;
+	text-align: left;
+}
+
+.column {
+	display: inline-block;
+	width: 33.33%;
+	text-align: right;
+	font-size: 12pt;
+}
+
+.idcheck {
+	width: 10%;
+	display: inline-block;
+	margin-left: 5px;
+	background-color: #ffff99;
+	color: #378FFF;
+	border: none;
+	font-size: 10pt;
+	cursor: pointer;
+}
+
+.idcheck:hover {
+	background-color: #FFE1E8;
+	color: #444867
+}
+
+.checktxt {
+	display: none;
+	position: relative;
+	left: 33.33%;
+	color: green;
+	font-style: italic;
+	font-size: 9pt;
+	line-height: 100%;
+	margin: 2px;
+}
+
+.cell30 {
+	display: inline-block;
+	width: 30%;
+	margin-left: 5px;
+	text-align:center;
+}
+
+.cell185 {
+	display: inline-block;
+	width: 18.5%;
+	margin-left: 5px;
+	text-align: center;
+}
+
+.avtcell {
+	width: 30%;
+	display: inline-block;
+	text-align: center;
+}
+
+.avtimg {
+	width: 100%;
+	height: auto;
+}
+
+.btncell {
+	margin-top: 5px;
+	width: 100%;
+	display: inline-block;
+	text-align: center;
+}

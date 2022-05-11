@@ -1,0 +1,312 @@
+# jsp02
+
+JSP의 구조
+
+	JSP는 html을 주축으로, 응답문서를 만들기 위한 언어의 일종이다.
+	필요시 Java 코드를 삽입할 수도 있는 스크립트 언어다.
+	
+	관건은 Java 소스코드를 html에 포함시키는 방식이 되겠다.
+	
+  +	html 과 차이점
+	html은 웹브라우저에서만 실행 가능하다. (서버측에선 X)
+	미리 준비된 문서를 응답해주고, 변화를 줄 수는 없다.
+	
+--------------------------------------------------------------------
+지시자
+==> JSP 문서의 특성이나 처리방식을 지시하는 명령.
+
+	<% 명령어 속성 ="속성값" . . . %>
+	
+	명령어 종류
+		page	: 문서 자체의 특성이나 처리방식 지시
+		include	: 문서 안 다른 문서를 포함하도록 지시
+		taglib	: 사용자가 제작한 태그를 사용할 수 있도록 선언
+		
+		
+	1. page 명령
+	
+	   현재 문서 전체의 특성, 처리방식을 지시
+	   
+	   <%@ page 속성="속성값" . . . %>		으로 명령 가능
+	   
+	   속성 (중요도 * 처리)
+		***	language		: 스크립트 할 언어 종류를 지정. (default : java)
+							  ex.
+							  	<%@ page language="java" %>
+							  	
+			extends			: JSP는 자동으로 Java 클래스로 변환되어 실행되는데,
+							  중간 단계의 언어로 바뀐 상태에서 실행 되어 ASP, PHP보다 빠르다.
+							  
+							  이 때, Java 클래스로 converting 하는 기준이 될 클래스를 지정하는게
+							  extends 속성이다. (default : HttpJspBase)
+							  ex.
+							  	<%@ page extends="javax.servlet.jsp.HttpJspBase" %>
+							  	
+		*	import			: 스크립트 안에 Java적인 요소를 넣을 때, 특정 패키지 소속이면
+							  Java와 동일하게 import가 필요하다.
+							  ex.
+							  	<%@ page import="java.util.*, java.io.*" %>
+							  	
+			session			: 세션의 사용 여부 판단. (default : true)
+			
+			buffer			: 내부적으로 버퍼의 속성을 정한다. (default : 8K)
+							  ex.
+							  	<%@ page buffer="none" %>	-> 사용 안함
+							  	<%@ page buffer="16K" %>	-> buffer size : 16KB
+							  	
+			autoFlush		: autoflush기능 사용 여부. (default : true)
+							  false로 지정 시, 수동 flush가 필요로 한다.
+							  
+			isThreadSafe	: Thread 처리할 때, 동기화 처리 여부를 정한다. (default : true)
+							+ JSP의 모든 문서는 자동 스레드 처리가 된다.
+							  여러 클라이언트에서 동시 접속 시, 스레드 처리로 응답된다.
+							  
+		*	info			: 문서 자체에 대한 주석을 달고싶을 때 사용.
+							  문서 속성과는 완전 무관하다.
+							  
+		*	errorPage		: JSP 문서 실행중 Exception 발생 시, 응답할 문서를 지정한다.
+		
+		*	isErrorPage		: 현재 문서가 에러 페이지용 문서인지 여부를 지정한다.
+		
+		***	contentType		: 실행 결과의 응답방식을 지정. (default : txt)
+							  ex.
+							  	<%@ page contentType="text/html" %>
+							  	
+							  실행 결과 탄생하는 문서의 종류도 정할 수 있다.
+							  (mime type으로 지정)
+							  ex.
+							  	<%@ page contentType="mimeType; charset=UTF-8" %>
+							  	
+		*	pageEncoding	: 문서의 인코딩 방식을 지정.
+							  (contentType 에서 인코딩 방식을 지정했다면 생략해도 무관.
+		
+	
+	2. inlcude 명령
+		
+		다른 문서를 현재 파일에 '포함'시켜 한 파일로 지시
+		
+		<%@ include file="합칠파일이름"%>
+		
+		웹 문서를 만들다 보면 발생하는
+		중복되는 레이아웃들을 처리하기 위한 명령이다.
+		
+	**	include 명령은 코드를 합쳐 한 문서로 만들고 compile 하기에,
+		합치는 과정에서 충돌이 나면 에러가 발생한다.
+		
+---------------------------------------------------------------------------------------------
+
+JSP 코드 작성 : 스크립트 방식
+==> JSP는 html 기반, Java 코드를 혼용할 수 있는 문서다.
+
+  +	JSP 문서 실행 순서
+  	요청 - .java로 변환 - .class로 컴파일 - Tomcat(혹은 다른 서버)가 실행
+  	- 실행 결과 만들어진 html 소스코드를 클라이언트에게 전송
+  	
+  	이렇게 다른 언어를 포함한 처리방식을 스크립트 방식이라고 하며,
+  	JSP문서에 Java어를 삽입하는 방식은 3가지가 있다.
+  	
+  	1. Script let 방식
+  	==> 일반적인 Java 언어를 포함하는 방식이다.
+  		이곳에 기록한 모든 내용은 service 함수 내에 포함되며,
+  		지역적인 역할을 하게 된다.
+  		
+	  +	service 함수?
+	  	JSP파일이 Java class로 변환되는 클래스를 servlet 클래스라고 하는데,
+	  	시작함수 이름이 serivce 함수다. (Java의 main 함수처럼)
+  		
+  		JSP 문서는 클라이언트가 요청한 문서 하나만 실행되므로,
+  		클래스가 연결되어 실행되는 경우는 거의 없다.
+  		따라서, main함수만 있으면 충분히 그 역할을 수행할 수 있다.
+  		
+  		형식
+  			<% 자바코딩. . . %>
+
+  	2. Declaration (선언자 방식, 선언부)
+  	==> JSP는 service 함수 안에서 대부분의 것이 실행된다.
+  		하지만 가끔 전역변수/함수가 필요할 경우,
+  		Declaration 을 사용한다.
+  		형식
+  			<%! 변수선언/함수제작 %>
+ 
+  	3. Expression (표현자 방식, 표현식)
+  	==> Java의 System.out.println() 처럼, 변수/함수를 출력하기 위한 스크립트.
+  		형식
+  			<%= 출력내용 %>
+  			
+  	  ※	출력내용은 오직 한개만 가능하다.
+  	 	문자열 결합으로, 하나의 문자열로 만들어 출력하는건 가능.
+
+주석문
+
+	1. html 주석		: <!-- -->
+	
+	2. Java script 주석	: //
+						  /**/
+	
+	3. JSP 주석			: <%-- --%>
+	
+Script let 방식 코드 내	: //
+						  /**/
+						  
+--------------------------------------------------------------------------------------------
+
+내장객체
+==> 자주 사용하는 클래스들 중 몇 개는, JSP 내부에서 미리 new 시켜 준비해놨다.
+	필요할 때 바로 사용할 수 있는 내장객체를 알아보자!
+	(내장객체의 사용은 곧 클래스의 사용이기 때문에, 구성 함수를 파악하는것이 중요하다.)
+	
+	1. out 객체
+	==> PrintWriter 클래스를 new 시켜놓은 내장객체.
+	
+		이 클래스는 클라이언트에게 응답하는 문서를 작성하도록 하는 기능을 갖는다.
+		(<%=%>와 동일 기능)
+		
+		주요 함수
+			write()
+			flush()
+			
+	  +	PrintWriter는 JSPWriter 클래스로 변환되어서 new 된 경우이다.
+			
+			
+  *	2. request 객체
+	==> 클라이언트의 요청정보를 관리하는 내장 객체.
+		클라이언트의 IP 주소, 요청 내용, 부가정보 등을 알고싶을 때 사용한다.
+		HttpServletRequest를 이용해 만들어졌다.
+		
+		주요함수
+			getParameter("키값")		: 서버측에서 클라이언트가 준 부가정보를 알아낸다.
+										※ 오직 String 으로만 받을 수 있으며, 부가정보를 세팅하는 함수는 존재하지 X
+										
+			getParameterValues("키값")	: 복수선택일 경우, 배열로 받게 되는 함수
+			
+		'클라이언트가 서버에게 요청하는 방법'이라는 주석을 문서 맨 아래에 첨부하였으니,
+		참고바란다.
+	
+	
+	3. response 객체
+	==> 서버가 클라이언트에게 응답하는 정보를 관리하는 내장 객체.
+		HttpServletResponse 라는 클래스를 이용해 만들어졌다.
+		
+		주요함수
+			sendRedirect()
+			==> 서버측에서 강제로 클라이언트의 요청을 변경한다.
+			
+			예를 들어, 게시판에 글 등록을 요청했을 경우
+			글 등록에 대한 응답이 아닌 글 목록 보여주기를 응답해주는게 일반적이다.
+			이럴 때 사용된다.
+			
+		  +	서버가 요청을 바꾸는 방법
+		  
+		  	1. redirect
+		  	==> 클라이언트의 요청정보를 reset 하고 새로운 요청으로 처리
+		  		(request 객체가 새롭게 만들어진다)
+		  		
+		  	2. forward
+		  	==> 원래 클라이언트의 요청을 유지하고, 화면에 보이는 문서만 바꿔치기 한다.
+		  		(request 객체 유지)
+		  		
+		  		그렇기에 새로고침 하면 클라이언트가 실제 요청한 지점부터 다시 시작한다.
+
+
+  *	4. session 객체
+	==> session을 관리하는 내장 객체.
+		HttpSession 라는 클래스를 이용해 만들어졌다.
+		
+		
+	5. application 객체
+	==> 서버 전체를 관리하는 내장 객체.
+		ServletContext 라는 클래스를 이용해 만들어졌다.
+		
+		
+	6. page 객체
+	==> 해당 문서 자체를 관리하는 내자 객체.
+		PageContext 라는 클래스를 이용해 만들어졌다.
+
+
+  +	클라이언트가 서버에게 요청하는 방법
+  
+  	1. GET : 주소 표시줄에 요청 내용이 나타나기에, 보안상으론 취약하다.
+  	
+  		1) 주소 표시줄에 입력해서 요청
+  		2) a 태그를 이용해 요청
+  		3) Java script의 location.href 속성을 정의하며 요청
+  			(loaction.href = '요청주소?키값=데이터&키값=데이터 . . . ';)
+  		4) form 태그 method="GET"으로 하고 action="요청주소" 입력해 요청
+  		
+  		
+      +	GET 방식 요청시 부가정보 입력하기
+      		<a href="요청할문서?키값=데이터&키값=데이터. . . ">내용</a>
+      	  ※ =, & , ? 사이에 공백이 있으면 안된다.
+      	  
+	  + 한글 깨짐 해결법
+	  	1. 해당 문서에서만 해결
+	  		<%
+	  			request.setCharacterEncoding("UTF-8");	// 유니코드로 인코딩
+	  		%>
+	  	
+	  	2. 모든 문서에서 해결
+	  		server.xml 파일의 Connector 태그 마지막 부분에
+	  		URIEncoding="UTF-8" 을 추가해준다.
+	  		
+
+	2. POST : GET 방식보다 보안상 유리
+	
+		<form 태그 제작으로 요청>
+		***	특징 : form 태그 밖에 있는 내용은 전달할 수 없다.
+		
+		***	submit 도구 만들기
+			1. html 형식으로 만들기
+				<input type="submit" value="버튼에표시될문자열">
+		
+			2. Javascript 형식으로 만들기
+				<script type="text/javascript">
+					var frm = form태그선택;
+					frm.submit();
+				</script>
+				
+			form 태그의 주요 속성
+				method	: form 속 데이터를 서버에게 보내는 방식 설정.
+						  (GET / POST)
+				action	: form 태그의 타겟 문서
+
+	  +	한글깨짐 방지법
+	  	==> 서버가 web.xml 파일의 필터링을 이용해 인코딩 해줘야 함.
+	  	
+	  		1. 필터 만들기 (옆으로 좀 긺)
+	  			<filter>
+	  				<filter-name>setcharacterEncodingFilter</filter-name>		// 필터 처리에 적당한 이름 부여
+	  				<filter-class>org.apache.catalina.filters.SetCharacterEncodingFilter</filter-class>		// 필터 처리에 사용할 클래스 지정
+	  				<init-param>	// 인코딩 방식 지정
+	  					<param-name>encoding</param-name>
+	  					<param-value>UTF-8<param-value>
+	  				</init-param>
+	  			</filter>
+	  			
+	  			이 부분을 찾아 주석 해제해준다!
+	  			
+	  		2. 필터 적용
+	  		
+	  			<filter-mapping>
+	  				<filter-name>setCharacterEncodingFilter</filter-name>	// 적용시킬 필터 이름 기입
+	  				<url-pattern>/*</url-pattern>	// 어떤 요청이 있을 때, 이 필터링을 사용할지 지정
+	  				// 기본 세팅 : /* (모든 요청에 대해 필터링)
+	  			</filter-mapping>
+	  			
+	  			이 부분을 찾아 주석 해제해준다!
+	  			
+		
+	  +	value 속성으로 지정한 내용이 전달되는 경우
+		  	<input type="text". . .>
+		  	<input type="password". . .>
+		  	<textarea>. . . </textarea>		외 모든 태그들!
+		  	
+
+	  +	name 속성이 같은, 여러 태그가 존재하는 경우
+		==> 배열 형식으로 전달된다!
+			따라서 위에서 언급된
+				request.getParameterValues("키값");
+			으로 꺼내줘야함!
+			
+
+	  +	radio버튼, select box의 경우
+	  ==> 선택한 태그의 value 속성 '만' 전달 된다!
