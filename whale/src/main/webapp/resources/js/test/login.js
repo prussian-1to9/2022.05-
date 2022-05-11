@@ -1,6 +1,6 @@
 /*// Javascript 방식
 document.getElementById('hbtn').onclick = function(){
-	location.href = '/whale/';
+	location.href = '/whale/test/';
 };
 
 // 로그인버튼 기능
@@ -46,7 +46,7 @@ document.getElementById('lbtn').onclick = function(){
 
 // jQuery
 $('#hbtn').click(function(){
-	$(location).attr('href', '/whale/');
+	$(location).attr('href', '/whale/test.dream');
 });
 
 // 로그인버튼 기능
@@ -56,7 +56,7 @@ $('#lbtn').click(function(){
 	if(!sid){
 		alert('아이디를 입력하세요.');
 		$('#id').focus();
-		return;
+		return; 
 	}
 	var spw = $('#pw').val();
 	if(!spw){
@@ -85,6 +85,7 @@ $('#lbtn').click(function(){
 	}*/
 
 	// 유효성검사 통과시 제출
+	alert(sid + ' 회원 로그인 성공');
 	$('#frm').attr('action', '/whale/test/loginProc.dream');
 	$('#frm').submit();
 });
@@ -141,7 +142,7 @@ $('#abtn').click(function(){
 				alert(sid + ' 회원 로그인 성공');
 				
 				// 홈페이지로 이동
-				$(location).attr('href', '/whale/');
+				$(location).attr('href', '/whale/test.dream');
 				
 			}else{
 				// ajax에 없는 아이디

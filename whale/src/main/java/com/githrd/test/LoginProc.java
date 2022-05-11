@@ -42,7 +42,7 @@ public class LoginProc extends HttpServlet {
 			session.setAttribute("SAVT", mvo.getAvt());
 			
 			// 메인페이지로 redirect
-			response.sendRedirect("/whale/");
+			response.sendRedirect("/whale/test.dream");
 		}else {
 			// 로그인 페이지로 돌려보냄
 			response.sendRedirect("/whale/test/login.dream");

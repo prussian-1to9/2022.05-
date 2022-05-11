@@ -14,7 +14,7 @@ public class LoginAjax extends HttpServlet {
 		// 세션검사
 		HttpSession session = req.getSession();
 		if(session.getAttribute("SID")!=null) {
-			resp.sendRedirect("/whale/");
+			resp.sendRedirect("/whale/test.dream");
 			return;
 		}
 		
