@@ -28,6 +28,7 @@ public class Login extends HttpServlet {
 		if(sid != null) {// 이미 로그인 되어있는 상태
 			// 메인페이지로 보낸다.
 			resp.sendRedirect("/whale/test.dream");
+			return;
 		}
 		
 		RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/views/test/member/login.jsp");
