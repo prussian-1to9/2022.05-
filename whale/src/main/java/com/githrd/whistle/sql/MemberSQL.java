@@ -4,6 +4,9 @@ public class MemberSQL {
 	public final int SEL_LOGIN_CNT = 1001;
 	public final int SEL_MEMB_INFO = 1002;
 	public final int SEL_AVT_INFO = 1003;
+	public final int SEL_ALL_AVT = 1004;
+	
+	public final int ADD_MEMBER = 3001;
 	
 	public String getSQL(int code) {
 		StringBuffer buff = new StringBuffer();
@@ -36,6 +39,25 @@ public class MemberSQL {
 			buff.append("	avatar ");
 			buff.append("WHERE ");
 			buff.append("	ano = ? ");
+			break;
+		
+		case SEL_ALL_AVT:
+			buff.append("SELECT ");
+			buff.append("	ano, savename, gen ");
+			buff.append("FROM ");
+			buff.append("	avatar ");
+			buff.append("WHERE ");
+			buff.append("	isShow = 'Y' ");
+			buff.append("	AND gen != 'N' ");
+			break;
+			
+		case ADD_MEMBER:
+			buff.append("INSERT INTO ");
+			buff.append("	member(mno, name, id, pw, mail, tel, avt, gen) ");
+			buff.append("VALUES( ");
+			buff.append("	(SELECT NVL(MAX(mno)+1, 1001) FROM member), ");
+			buff.append("	?, ?, ?, ?, ?, ?, ? ");
+			buff.append(") ");
 			break;
 		}
 		

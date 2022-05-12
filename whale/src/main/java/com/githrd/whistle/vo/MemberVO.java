@@ -3,8 +3,8 @@ package com.githrd.whistle.vo;
 import java.sql.*;
 import java.text.SimpleDateFormat;
 public class MemberVO {
-	private int mno, avt;
-	private String name, id, pw, mail, tel, sdate, gen;
+	private int mno, avt, ano;
+	private String name, id, pw, mail, tel, sdate, gen, savename;
 	private Date jdate;
 	private Time jtime;
 	
@@ -103,5 +103,24 @@ public class MemberVO {
 
 	public void setAvt(int avt) {
 		this.avt = avt;
+	}
+
+	public int getAno() {
+		return ano;
+	}
+
+
+	public void setAno(int ano) {
+		this.ano = ano;
+	}
+
+
+	public String getSavename() {
+		return savename;
+	}
+
+
+	public void setSavename(String savename) {
+		this.savename = savename;
 	}
 }

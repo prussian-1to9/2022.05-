@@ -38,11 +38,11 @@
 					<script type="text/javascript">
 						alert('${SID} 님이 로그인했습니다.');
 					</script>
-</c:if>
 					<div class="w3-col w3-border-bottom pdb10">
 						<span class="w3-cell m2 w3-button w3-small w3-red w3-hover-light-green w3-right mt0" id="obtn">LogOut</span>
 						<span class="w3-cell m2 w3-button w3-small w3-red w3-hover-light-green w3-left mt0" id="ibtn">회원정보</span>
 					</div>
+</c:if>
 					<div class="w3-col mt10">
 						<div class="w3-col m3 pdh10">
 							<h5 class="w3-col w3-button w3-red w3-hover-amber" id="mlbtn">회원목록</h5>

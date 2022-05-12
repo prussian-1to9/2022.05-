@@ -72,3 +72,50 @@ Connection Pool - Web Sever 등록
 	    	driverClassName="oracle.jdbc.driver.OracleDriver"
 	    	url="jdbc:oracle:thin:@localhost:1521:xe"
 	    	/>
+	    	
+--------------------------------------------------------------------------
+ひとりごと～
+	request 객체 	: 해당 클라이언트의 요청 정보를 담음
+	session 객체 	: 서버가 기억하는 클라이언트와의 연결 정보
+					  (매우 민감한 정보기 때문에 잘 쓰지 않는다.)
+					  
+	attribute 		: 속성
+					  ex.
+					  	public void service(HttpServletRequest req, HttpServletResponse resp);
+					  		가 있을 때
+					  	
+					  	req.setAttribute("SID", id);
+					  	==> 해당 클라이언트의 request 객체의
+					  		속성 "SID" 값을 id로 설정
+					  		
+					  	  +	request 객체 = 요청정보라는 것을 기억하자.
+					  	  	'요청 정보'에 대한 속성을 추가/변경해 주는 것이다.
+						
+						req.getSession().setAttribute("SID", id);
+						==> 하나하나 분리해서 정리해보자.
+						
+								req.getSession()
+							
+							함수를 실행시킨 request 객체의 정보를 기억한 session을 불러온다.
+							(요청정보엔 클라이언트의 정보도 포함되어있다.)
+							
+								req.getSession().setAttribute("SID", id)
+							
+							해당 session의 속성 "SID"를 id라는 값으로 설정한다.
+							
+							즉,
+								req.getSession().setAttribute()	함수는
+							함수를 호출시킨 클라이언트의
+							'서버가 기억하는 정보'에 대한 속성을 추가/변경 해주는 것이다!
+							
+							
+							
+	forward? redirect?
+	
+		forward		: 대신해줄 뷰로 보여질 특정 페이지를 로딩해준다.
+					  주로 요청 처리 함수의 성공 결과로 데이터를 넘겨줄 때 많이 쓰인다.
+					  따라서 클라이언트에게 보여지는 url도 변하지 않는다.
+					  
+		redirect	: 강제로 다른 요청으로 대체시킨다.
+					  데이터가 보존되지 않고 소실되며,
+					  클라이언트에게 보여지는 url 또한 변경된다.

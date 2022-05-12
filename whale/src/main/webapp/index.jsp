@@ -8,6 +8,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<c:redirect url="/main.blp" />
+	<c:redirect url=" /whistle/main.blp" />
 </body>
 </html>

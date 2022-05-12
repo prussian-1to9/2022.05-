@@ -112,7 +112,7 @@ public class BlpDispatch extends HttpServlet {
 		
 		// 5. 실행
 		String view = blp.exec(req, resp);
-		bool = (Boolean)req.getAttribute("isRedirect");
+		bool = (Boolean)req.getAttribute("isRedirect");	// 얕은 복사
 		
 		if(bool==null) {// 비동기통신
 			PrintWriter pw = resp.getWriter();
