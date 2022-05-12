@@ -1,6 +1,6 @@
 /*// Javascript 방식
 document.getElementById('hbtn').onclick = function(){
-	location.href = '/whale/test/';
+	location.href = '/whistle/test/';
 };
 
 // 로그인버튼 기능
@@ -39,14 +39,14 @@ document.getElementById('lbtn').onclick = function(){
 	}
 	
 	// 모든 테스트 통과시 제출.
-	document.frm.setAttribute('action', '/whale/test/loginProc.dream');
+	document.frm.setAttribute('action', '/whistle/test/loginProc.dream');
 	document.getElementById('frm').submit();
 };
 */
 
 // jQuery
 $('#hbtn').click(function(){
-	$(location).attr('href', '/whale/test.dream');
+	$(location).attr('href', '/whistle/test/');
 });
 
 // 로그인버튼 기능
@@ -86,7 +86,7 @@ $('#lbtn').click(function(){
 
 	// 유효성검사 통과시 제출
 	alert(sid + ' 회원 로그인 성공');
-	$('#frm').attr('action', '/whale/test/loginProc.dream');
+	$('#frm').attr('action', '/whistle/test/loginProc.dream');
 	$('#frm').submit();
 });
 
@@ -127,7 +127,7 @@ $('#abtn').click(function(){
 
 	// 유효성검사 통과시 비동기통신으로 폼 전송
 	$.ajax({
-		url: '/whale/test/loginAjax.dream',
+		url: '/whistle/test/loginAjax.dream',
 		type: 'post',
 		dataType: 'json',
 		data: {
@@ -142,7 +142,7 @@ $('#abtn').click(function(){
 				alert(sid + ' 회원 로그인 성공');
 				
 				// 홈페이지로 이동
-				$(location).attr('href', '/whale/test.dream');
+				$(location).attr('href', '/whistle/test/');
 				
 			}else{
 				// ajax에 없는 아이디

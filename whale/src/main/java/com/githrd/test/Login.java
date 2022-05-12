@@ -1,7 +1,6 @@
 package com.githrd.test;
 
-import java.io.IOException;
-
+import java.io.*;
 import javax.servlet.*;
 import javax.servlet.annotation.*;
 import javax.servlet.http.*;
@@ -27,7 +26,14 @@ public class Login extends HttpServlet {
 		// 로그인 검사
 		if(sid != null) {// 이미 로그인 되어있는 상태
 			// 메인페이지로 보낸다.
-			resp.sendRedirect("/whale/test.dream");
+			resp.sendRedirect("/whistle/test/");
+			
+			// 로그인 하라고 경고창 띄우기
+			resp.setContentType("text/html; charset=UTF-8");
+			PrintWriter out = resp.getWriter();
+			out.println("<script>alert('로그인 후 이용해 주세요.');</script>");
+			out.flush();
+			
 			return;
 		}
 		

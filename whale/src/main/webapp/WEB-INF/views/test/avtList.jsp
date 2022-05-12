@@ -6,9 +6,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Ajax Test</title>
-<link rel="stylesheet" type="text/css" href="/whale/resources/css/w3.css">
-<link rel="stylesheet" type="text/css" href="/whale/resources/css/base.css">
-<script type="text/javascript" src="/whale/resources/js/jquery-3.6.0.min.js"></script>
+<link rel="stylesheet" type="text/css" href="/whistle/resources/css/w3.css">
+<link rel="stylesheet" type="text/css" href="/whistle/resources/css/base.css">
+<script type="text/javascript" src="/whistle/resources/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
 		$('.ano').click(function(){
@@ -17,7 +17,7 @@
 			txt = txt.substring(3);
 			
 			$.ajax({
-				url: '/whale/test/avtInfo.dream',
+				url: '/whistle/test/avtInfo.dream',
 				type: 'post',
 				dataType: 'json',
 				data: {
@@ -38,7 +38,7 @@
 					var gen = ((data.gen == 'M')?'남자':'여자');
 					
 					// 넣어주기
-					$('.avtbox').attr('src', '/whale/resources/img/avatar/' + sname);
+					$('.avtbox').attr('src', '/whistle/resources/img/avatar/' + sname);
 					$('#anum').html(ano);	// html() 대신 text()도 OK
 					$('#aname').html(sname);
 					$('#adir').html(dir);
@@ -64,7 +64,7 @@
 		<div class="w3-col w3-padding w3-margin-top w3-card-4">
 			<h1 class="w3-blue"><span id="atitle">no image</span> Info</h1>
 			<div class="w3-col w3-display-container w3-border" style="width: 250px; height:250px;">
-				<img src="/whale/resources/img/avatar/noimage.jpg" class="avtbox w3-display-middle">
+				<img src="/whistle/resources/img/avatar/noimage.jpg" class="avtbox w3-display-middle">
 			</div>
 			<div class="w3-rest w3-left-align">
 				<h4>아바타 번호 : <span id="anum"></span></h4>

@@ -5,10 +5,10 @@
 <head>
 <meta charset="UTF-8">
 <title>WhistleMain</title>
-<link rel="stylesheet" type="text/css" href="/whale/resources/css/w3.css">
-<link rel="stylesheet" type="text/css" href="/whale/resources/css/base.css">
-<script type="text/javascript" src="/whale/resources/js/jquery-3.6.0.min.js"></script>
-<script type="text/javascript" src="/whale/resources/js/whistle/main.js"></script>
+<link rel="stylesheet" type="text/css" href="/whistle/resources/css/w3.css">
+<link rel="stylesheet" type="text/css" href="/whistle/resources/css/base.css">
+<script type="text/javascript" src="/whistle/resources/js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="/whistle/resources/js/whistle/main.js"></script>
 <style>
 	h5, span {
 		height: 20px;

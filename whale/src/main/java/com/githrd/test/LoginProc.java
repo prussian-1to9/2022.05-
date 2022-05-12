@@ -14,7 +14,7 @@ public class LoginProc extends HttpServlet {
 		// 세션 검사 먼저!
 		String sid = (String)request.getSession().getAttribute("SID");
 		if(sid!=null) {// 이미 로그인 된 상태
-			response.sendRedirect("/whale/");
+			response.sendRedirect("/whistle/");
 		}
 		
 		// 통과했다면
@@ -42,10 +42,10 @@ public class LoginProc extends HttpServlet {
 			session.setAttribute("SAVT", mvo.getAvt());
 			
 			// 메인페이지로 redirect
-			response.sendRedirect("/whale/test.dream");
+			response.sendRedirect("/whistle/test/");
 		}else {
 			// 로그인 페이지로 돌려보냄
-			response.sendRedirect("/whale/test/login.dream");
+			response.sendRedirect("/whistle/test/login.dream");
 		}
 	}
 

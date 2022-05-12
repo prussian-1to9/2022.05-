@@ -5,8 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>JSP에서 Java 코딩</title>
-<link rel="stylesheet" type="text/css" href="/whale/resources/css/w3.css">
-<link rel="stylesheet" type="text/css" href="/whale/resources/css/base.css">
+<link rel="stylesheet" type="text/css" href="/whistle/resources/css/w3.css">
+<link rel="stylesheet" type="text/css" href="/whistle/resources/css/base.css">
 </head>
 <body>
 <%--

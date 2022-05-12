@@ -7,8 +7,8 @@ import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 
-@WebServlet("/test.dream")
-public class MainWhaleTest extends HttpServlet {
+@WebServlet("/test/")
+public class TestIndex extends HttpServlet {
 
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// 세션객체 꺼내기
@@ -20,7 +20,7 @@ public class MainWhaleTest extends HttpServlet {
 		// 로그인 검사
 		if(sid == null) {// 로그인이 안되어있는 상태
 			// 로그인 페이지로 보낸다.
-			resp.sendRedirect("/whale/test/login.dream");
+			resp.sendRedirect("/whistle/test/login.dream");
 			return;
 		}
 		RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/views/test/index.jsp");

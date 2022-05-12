@@ -5,9 +5,9 @@
 <head>
 <meta charset="UTF-8">
 <title>JSP 내장객체 Study</title>
-<link rel="stylesheet" type="text/css" href="/whale/resources/css/w3.css">
-<link rel="stylesheet" type="text/css" href="/whale/resources/css/base.css">
-<script type="text/javascript" src="/whale/resources/js/jquery-3.6.0.min.js"></script>
+<link rel="stylesheet" type="text/css" href="/whistle/resources/css/w3.css">
+<link rel="stylesheet" type="text/css" href="/whistle/resources/css/base.css">
+<script type="text/javascript" src="/whistle/resources/js/jquery-3.6.0.min.js"></script>
 <style type="text/css">
 	label{
 		font-size: 14pt;
@@ -30,7 +30,7 @@
 <body>
 	<div class="w3-content mx650">
 		<h1 class="w3-blue w3-center w3-margin-bottom w3-padding">Login</h1>
-		<form method="get" action="/whale/test/logindata.dream" name="frm" id="frm"
+		<form method="get" action="/whistle/test/logindata.dream" name="frm" id="frm"
 			class="w3-col w3-padding w3-card-4">
 			<div class="w3-col">
 				<label for="id" class="w3-col m2 w3-right-align" style="padding-top:10px;">ID : </label>

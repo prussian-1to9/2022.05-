@@ -20,6 +20,6 @@ public class Logout extends HttpServlet {
 		session.removeAttribute("SAVT");
 		
 		// 다시 로그인 뷰로 보내기
-		response.sendRedirect("/whale/test/login.dream");
+		response.sendRedirect("/whistle/test/login.dream");
 	}
 }

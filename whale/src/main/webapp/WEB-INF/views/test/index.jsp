@@ -5,15 +5,15 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Whale</title>
-<link rel="stylesheet" type="text/css" href="/whale/resources/css/w3.css">
-<link rel="stylesheet" type="text/css" href="/whale/resources/css/base.css">
-<script type="text/javascript" src="/whale/resources/js/jquery-3.6.0.min.js"></script>
+<title>whistle</title>
+<link rel="stylesheet" type="text/css" href="/whistle/resources/css/w3.css">
+<link rel="stylesheet" type="text/css" href="/whistle/resources/css/base.css">
+<script type="text/javascript" src="/whistle/resources/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
 		$('#obtn').click(function(){
 			alert('로그아웃 되었습니다.');
-			$(location).attr('href', '/whale/test/logout.dream');
+			$(location).attr('href', '/whistle/test/logout.dream');
 		});
 		
 		$('#ibtn').click(function(){
@@ -23,7 +23,7 @@
 		// 아바타 데이터 꺼내오기
 		var txt = $('#ano').html();
 		$.ajax({
-			url: '/whale/test/avtInfo.dream',
+			url: '/whistle/test/avtInfo.dream',
 			type: 'post',
 			dataType: 'json',
 			data: {
@@ -34,7 +34,7 @@
 				var gen = ((data.gen == 'M')?'남자':'여자');
 				
 				// 넣어주기
-				$('#avtimg').attr('src', '/whale/resources/img/avatar/' + sname);
+				$('#avtimg').attr('src', '/whistle/resources/img/avatar/' + sname);
 				$('#gen').html(gen);
 			},
 			error: function(){
@@ -68,7 +68,7 @@
 			<div class="w3-col m4 w3-border-right" style="height:200px;">
 				<!-- 아바타 이미지 기본값 : noimage.jpg -->
 				<p style="display:none;" id="ano">${SAVT}</p>
-				<img src="/whale/resources/img/avatar/noimage.jpg" width="170px" height="170px"
+				<img src="/whistle/resources/img/avatar/noimage.jpg" width="170px" height="170px"
 					class="w3-border w3-margin" id="avtimg">
 			</div>
 			<div class="w3-col m8">

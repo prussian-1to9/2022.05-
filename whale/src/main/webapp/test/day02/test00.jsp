@@ -5,8 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>test00</title>
-<link rel="stylesheet" type="text/css" href="/whale/resources/css/w3.css">
-<link rel="stylesheet" type="text/css" href="/whale/resources/css/base.css">
+<link rel="stylesheet" type="text/css" href="/whistle/resources/css/w3.css">
+<link rel="stylesheet" type="text/css" href="/whistle/resources/css/base.css">
 <%
 	int no = 10;
 	// 이곳에서 작성된 코드는 service 함수 내에서 작성이 되어, 함수 작성은 불가능.
